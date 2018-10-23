@@ -10,14 +10,46 @@ class Solution {
      * Problem 1
      */ 
     vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> result;
         for (int i = 0; i < nums.size(); ++i) {
             for (int j = i + 1; j < nums.size(); ++j) {
                 if (nums[i] + nums[j] == target) {
-                    vector<int> result({i, j});
+                    result.push_back(i);
+                    result.push_back(j);
                     return result;
                 }
             }
         }
+    }
+
+    /**
+     * Problem 5
+     * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+     * 
+     * Example 1:
+     * Input: "babad"
+     * Output: "bab"
+     * Note: "aba" is also a valid answer.
+     * 
+     * Example 2:
+     * Input: "cbbd"
+     * Output: "bb"
+     */
+    string longestPalindrome(string s) {
+        bool result[1010][1010]; // result[start][end]
+        int rs = 0, re = 0;
+        memset(result, true, sizeof(result));
+        for (int i = 0; i < s.size(); ++i) {
+            result[i][i] = true;
+            for (int start = i - 1; start >= 0; --start) {
+                int length = i - start + 1;
+                result[start][i] = (s[start] == s[i] && result[start + 1][i - 1]);
+                if (result[start][i] && length > (re - rs + 1)) {
+                    rs = start; re = i;
+                }
+            }
+        }
+        return s.substr(rs, (re - rs + 1));
     }
 
     /**
@@ -45,7 +77,7 @@ class Solution {
     /**
      * Problem 63
      */
-    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    int uniquePathsWithObstacles(vector<vector<int> >& obstacleGrid) {
         int result[110][110];
         memset(result, 0, sizeof(result));
         result[0][1] = 1;
@@ -64,7 +96,7 @@ class Solution {
     /**
      * Problem 64
      */
-    int minPathSum(vector<vector<int>>& grid) {
+    int minPathSum(vector<vector<int> >& grid) {
         int result[1010][1010];
         memset(result, INT_MAX, sizeof(result));
         result[0][1] = result[1][0] = grid[0][0];
