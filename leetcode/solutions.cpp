@@ -53,6 +53,61 @@ class Solution {
     }
 
     /**
+     * Problem 10
+     * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+     * '.' Matches any single character.
+     * '*' Matches zero or more of the preceding element.
+     * The matching should cover the entire input string (not partial).
+     * 
+     * Note:
+     * 
+     * s could be empty and contains only lowercase letters a-z.
+     * p could be empty and contains only lowercase letters a-z, and characters like . or *.
+     * 
+     */
+
+    bool isMatch(string s, string p) {
+        // base cases
+        if (s.empty() && p.empty()) {
+            return true;
+        } else if (s.empty()) {
+            if (p.size() == 1) {
+                return false;
+            } else {
+                return p[1] == '*' && isMatch(s, p.substr(2));
+            }
+        } else if (p.empty()) {
+            return false;
+        } else if (p.size() == 1) {
+            return (s.size() == 1) && (p[0] == '.' ? true : p[0] == s[0]);
+        }
+        // recursive cases
+        if (p[1] == '*') {
+            if (p[0] == '.') {
+                bool result = false;
+                for (int i = 0; i <= s.size(); ++i) {
+                    result = result || isMatch(s.substr(i), p.substr(2));
+                }
+                return result;
+            } else {
+                bool result = isMatch(s.substr(0), p.substr(2));
+                int index = 0;
+                while (s[index] == p[0]) {
+                    result = result || isMatch(s.substr(index + 1), p.substr(2));
+                    index++;
+                } 
+                return result;
+            }
+        } else {
+            if (p[0] == '.') {
+                return isMatch(s.substr(1), p.substr(1));
+            } else {
+                return p[0] == s[0] && isMatch(s.substr(1), p.substr(1));
+            }
+        }
+    }
+
+    /**
      * Problem 32
      */
     int longestValidParentheses(string s) {
