@@ -5,7 +5,6 @@ main
 main.in
 main.out
 compile.sh
-test.cpp
 test
 test.in
 test.out
