@@ -386,4 +386,22 @@ class Solution {
         }
         return r[n]; 
     }
+
+    /**
+     * Problem 96
+     * Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
+     */
+    int numTrees(int n) {
+        int r[n + 5];
+        r[0] = 0;
+        r[1] = 1;
+        r[2] = 2;
+        for (int i = 3; i <= n; ++i) {
+            r[i] = 2 * r[i - 1];
+            for (int left = 1; left <= i - 2; ++left) {
+                r[i] += r[left] * r[i - left - 1];
+            }
+        }
+        return r[n];
+    }
 };
