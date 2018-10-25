@@ -16,9 +16,17 @@ void p87(Solution &s) {
     cout << s.isScramble("abcde", "caebd") << endl; // false
 }
 
+void p91(Solution &s) {
+    cout << s.numDecodings("12") << endl; // 2
+    cout << s.numDecodings("226") << endl; // 3
+    cout << s.numDecodings("0") << endl; // 0
+    cout << s.numDecodings("10") << endl; // 1
+}
+
 int main() {
     Solution solutions = Solution();
     // p44(solutions);
-    p87(solutions);
+    // p87(solutions);
+    // p91(solutions);
     return 0;
 }

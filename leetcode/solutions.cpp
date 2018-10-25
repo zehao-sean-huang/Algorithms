@@ -357,4 +357,33 @@ class Solution {
         }
         return r[n][0][0];
     }
+
+    /**
+     * Problem 91
+     * A message containing letters from A-Z is being encoded to numbers using the following mapping.
+     * 
+     * 'A' -> 1
+     * 'B' -> 2
+     * ...
+     * 'Z' -> 26
+     * Given a non-empty string containing only digits, determine the total number of ways to decode it.
+     */
+    int numDecodings(string s) {
+        int n = s.size();
+        int r[n + 1];
+        memset(r, 0, sizeof(r));
+        r[0] = 1;
+        r[1] = s[0] != '0';
+        for (int i = 2; i <= n; ++i) {
+            int d = int(s[i - 1] - 48);
+            int e = int(s[i - 2] - 48);
+            if (d != 0) {
+                r[i] += r[i - 1];
+            }
+            if (e != 0 && 10 * e + d <= 26) {
+                r[i] += r[i - 2];
+            }
+        }
+        return r[n]; 
+    }
 };
