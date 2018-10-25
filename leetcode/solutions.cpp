@@ -7,6 +7,20 @@ class Solution {
     public:
     
     /**
+     * util functions
+     */
+    void printVector(vector<int>& v) {
+        if (v.empty()) {
+            cout << "<empty vector>" << endl;
+        } else {
+            for (int i : v) {
+                cout << i << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    /**
      * Problem 1
      */ 
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -138,6 +152,81 @@ class Solution {
         }
         return maxr;
     }
+
+    /**
+     * Problem 44
+     * Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
+     * 
+     * '?' Matches any single character.
+     * '*' Matches any sequence of characters (including the empty sequence).
+     * The matching should cover the entire input string (not partial).
+     * 
+     * Note:
+     * 
+     * s could be empty and contains only lowercase letters a-z.
+     * p could be empty and contains only lowercase letters a-z, and characters like ? or *.
+     */
+    bool isMatchWildcard(string s, string p) {
+        if (p.empty()) {
+            return s.empty();
+        }
+        bool r[s.size() + 1][p.size() + 1];
+        memset(r, false, sizeof(r));
+        r[0][0] = true;
+        for (int j = 1; j <= p.size(); ++j) {
+            if (p[j - 1] == '*') {
+                r[0][j] = r[0][j - 1];
+            }
+        }
+        for (int i = 1; i <= s.size(); ++i) {
+            for (int j = 1; j <= p.size(); ++j) {
+                if (p[j - 1] == '*') { // be sure to understand why only r[i - 1][j]
+                    r[i][j] = r[i][j - 1] || r[i - 1][j];
+                } else if (p[j - 1] == '?' || s[i - 1] == p[j - 1]) {
+                    r[i][j] = r[i - 1][j - 1];
+                } else {
+                    r[i][j] = false;
+                }
+            }
+        }
+        return r[s.size()][p.size()];
+    }
+
+    /**
+     * Problem 53
+     * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+     * Example:
+     * 
+     * Input: [-2,1,-3,4,-1,2,1,-5,4],
+     * Output: 6
+     * Explanation: [4,-1,2,1] has the largest sum = 6.
+     * Follow up:
+     * 
+     * If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+     */
+    int maxSubArray(vector<int>& nums) {
+        if (nums.empty()) {
+            return 0;
+        } else if (nums.size() == 1) {
+            return nums[0];
+        } else {
+            int mid = nums.size() / 2;
+            vector<int> left(nums.begin(), nums.begin() + mid);
+            vector<int> right(nums.begin() + mid, nums.end());
+            int rl = maxSubArray(left);
+            int rr = maxSubArray(right);
+            int ltm = INT_MIN, rtm = INT_MIN, ls = 0, rs = 0;
+            for (int i = left.size() - 1; i >= 0; --i) {
+                ls += left[i];
+                ltm = max(ltm, ls);
+            }
+            for (int i = 0; i < right.size(); ++i) {
+                rs += right[i];
+                rtm = max(rtm, rs);
+            }
+            return max(ltm + rtm, max(rl, rr));
+        }
+    }
     
     /**
      * Problem 62
@@ -207,5 +296,35 @@ class Solution {
             computed[n] = climbStairs(n - 1) + climbStairs(n - 2);
         } 
         return computed[n];
+    }
+
+    /**
+     * Problem 72
+     * Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
+     * 
+     * You have the following 3 operations permitted on a word:
+     * 
+     * Insert a character
+     * Delete a character
+     * Replace a character
+     */
+    int minDistance(string word1, string word2) {
+        int m = word1.size(), n = word2.size();
+        int r[m + 1][n + 1];
+        memset(r, 0, sizeof(r));
+        for (int j = 0; j <= n; ++j) {
+            r[0][j] = j;
+        }
+        for (int i = 1; i <= m; ++i) {
+            r[i][0] = i;
+            for (int j = 1; j <= n; ++j) {
+                if (word1[i - 1] == word2[j - 1]) {
+                    r[i][j] = r[i - 1][j - 1];
+                } else {
+                    r[i][j] = 1 + min(r[i - 1][j - 1], min(r[i - 1][j], r[i][j - 1]));
+                }
+            }
+        }
+        return r[m][n];
     }
 };
