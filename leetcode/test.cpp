@@ -30,11 +30,17 @@ void p96(Solution &s) {
     cout << s.numTrees(4) << endl; // ?
 }
 
+void p97(Solution &s) {
+    cout << s.isInterleave("aabcc", "dbbca", "aadbbcbcac") << endl;
+    cout << s.isInterleave("aabcc", "dbbca", "aadbbbaccc") << endl;
+}
+
 int main() {
     Solution solutions = Solution();
     // p44(solutions);
     // p87(solutions);
     // p91(solutions);
     // p96(solutions);
+    p97(solutions);
     return 0;
 }
