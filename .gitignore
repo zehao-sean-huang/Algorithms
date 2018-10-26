@@ -8,3 +8,4 @@ compile.sh
 test
 test.in
 test.out
+run.sh

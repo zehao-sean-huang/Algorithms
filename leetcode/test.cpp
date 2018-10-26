@@ -35,12 +35,18 @@ void p97(Solution &s) {
     cout << s.isInterleave("aabcc", "dbbca", "aadbbbaccc") << endl;
 }
 
+void p115(Solution &s) {
+    cout << s.numDistinct("rabbbit", "rabbit") << endl; // 3
+    cout << s.numDistinct("babgbag", "bag") << endl; // 5
+}
+
 int main() {
     Solution solutions = Solution();
     // p44(solutions);
     // p87(solutions);
     // p91(solutions);
     // p96(solutions);
-    p97(solutions);
+    // p97(solutions);
+    p115(solutions);
     return 0;
 }

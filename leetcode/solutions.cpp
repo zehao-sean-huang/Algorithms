@@ -469,4 +469,28 @@ class Solution {
             return r[m][n];
         }
     }
+
+    /**
+     * Problem 115
+     * Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+     * 
+     * A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+     */
+    int numDistinct(string s, string t) {
+        int m = s.size(), n = t.size();
+        int r[m + 5][n + 5];
+        memset(r, 0, sizeof(r));
+        for (int i = 0; i <= m; ++i) {
+            r[i][0] = 1;
+        }
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 1; j <= min(i, n); ++j) {
+                r[i][j] = r[i - 1][j];
+                if (s[i - 1] == t[j - 1]) {
+                    r[i][j] += r[i - 1][j - 1];
+                }
+            }
+        }
+        return r[m][n];
+    }
 };
