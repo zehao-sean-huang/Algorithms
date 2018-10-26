@@ -428,6 +428,22 @@ class Solution {
     }
 
     /**
+     * Problem 94
+     * Given a binary tree, return the inorder traversal of its nodes' values.
+     */
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> r;
+        if (root != nullptr) {
+            vector<int> left = inorderTraversal(root->left);
+            vector<int> right = inorderTraversal(root->right);
+            r.insert(r.end(), left.begin(), left.end());
+            r.push_back(root->val);
+            r.insert(r.end(), right.begin(), right.end());
+        }
+        return r;
+    }
+
+    /**
      * Problem 96
      * Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
      */
