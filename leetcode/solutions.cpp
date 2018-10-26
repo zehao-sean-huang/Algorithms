@@ -8,6 +8,13 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
 
     public:
@@ -532,5 +539,25 @@ class Solution {
             }
         }
         return search[n];
+    }
+
+    /**
+     * Problem 814
+     * We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
+     * Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
+     */
+    TreeNode* pruneTree(TreeNode* root) {
+        if (root->left != nullptr) {
+            root->left = pruneTree(root->left);
+        }
+        if (root->right != nullptr) {
+            root->right = pruneTree(root->right);
+        }
+        if (root->left == nullptr && root->right == nullptr) {
+            if (root->val == 0) {
+                root = nullptr;
+            }
+        }
+        return root;
     }
 };
