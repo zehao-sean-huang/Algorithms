@@ -680,4 +680,19 @@ class Solution {
         }
         return root;
     }
+    
+    /**
+     * Problem 746
+     * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
+     * Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
+     */
+    int minCostClimbingStairs(vector<int>& cost) {
+        int ans1 = 0, ans2 = 0;
+        for (int i = cost.size() - 1; i >= 0; i--) {
+            int ans0 = cost[i] + min(ans1, ans2);
+            ans2 = ans1;
+            ans1 = ans0;
+        }
+        return min(ans1, ans2);
+    }
 };

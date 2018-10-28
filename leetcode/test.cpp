@@ -52,14 +52,21 @@ void p115(Solution &s) {
     cout << s.numDistinct("babgbag", "bag") << endl; // 5
 }
 
+void p746(Solution &s) {
+    vector<int> v1;
+    v1.push_back(10); v1.push_back(15); v1.push_back(20);
+    cout << s.minCostClimbingStairs(v1) << endl; // 15
+}
+
 int main() {
     Solution solutions = Solution();
-    p3(solutions);
+    // p3(solutions);
     // p44(solutions);
     // p87(solutions);
     // p91(solutions);
     // p96(solutions);
     // p97(solutions);
     // p115(solutions);
+    p746(solutions);
     return 0;
 }
