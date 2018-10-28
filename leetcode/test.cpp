@@ -2,12 +2,18 @@
 
 using namespace std;
 
-void p44(Solution &solutions) {
-    cout << solutions.isMatchWildcard("aa", "a") << endl;
-    cout << solutions.isMatchWildcard("aa", "*") << endl;
-    cout << solutions.isMatchWildcard("cb", "?a") << endl;
-    cout << solutions.isMatchWildcard("adceb", "*a*b") << endl;
-    cout << solutions.isMatchWildcard("acdcb", "a*c?b") << endl;
+void p3(Solution &s) {
+    cout << s.lengthOfLongestSubstring("abcabcbb") << endl; // 3
+    cout << s.lengthOfLongestSubstring("bbbbb") << endl; // 1
+    cout << s.lengthOfLongestSubstring("pwwkew") << endl; // 3
+}
+
+void p44(Solution &s) {
+    cout << s.isMatchWildcard("aa", "a") << endl;
+    cout << s.isMatchWildcard("aa", "*") << endl;
+    cout << s.isMatchWildcard("cb", "?a") << endl;
+    cout << s.isMatchWildcard("adceb", "*a*b") << endl;
+    cout << s.isMatchWildcard("acdcb", "a*c?b") << endl;
 }
 
 void p87(Solution &s) {
@@ -27,7 +33,7 @@ void p96(Solution &s) {
     cout << s.numTrees(1) << endl; // 1
     cout << s.numTrees(2) << endl; // 2
     cout << s.numTrees(3) << endl; // 5
-    cout << s.numTrees(4) << endl; // ?
+    cout << s.numTrees(4) << endl; // 14
 }
 
 void p97(Solution &s) {
@@ -42,11 +48,12 @@ void p115(Solution &s) {
 
 int main() {
     Solution solutions = Solution();
+    p3(solutions);
     // p44(solutions);
     // p87(solutions);
     // p91(solutions);
     // p96(solutions);
     // p97(solutions);
-    p115(solutions);
+    // p115(solutions);
     return 0;
 }
