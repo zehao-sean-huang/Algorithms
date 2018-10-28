@@ -8,6 +8,12 @@ void p3(Solution &s) {
     cout << s.lengthOfLongestSubstring("pwwkew") << endl; // 3
 }
 
+void p9(Solution &s) {
+    cout << s.isPalindrome(121) << endl; // true
+    cout << s.isPalindrome(-121) << endl; // false
+    cout << s.isPalindrome(10) << endl; // false
+}
+
 void p44(Solution &s) {
     cout << s.isMatchWildcard("aa", "a") << endl;
     cout << s.isMatchWildcard("aa", "*") << endl;

@@ -130,6 +130,25 @@ class Solution {
     }
 
     /**
+     * Problem 9
+     * Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+     */
+    bool isPalindrome(int x) {
+        string number = string(to_string(x));
+        int n = number.size();
+        if (n == 1) {
+            return true;
+        }
+        for (int i = 0; i < n / 2; ++i) {
+            // i = 0, n = 4, j = n - 1 - i
+            if (number[i] != number[n - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Problem 10
      * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
      * '.' Matches any single character.
