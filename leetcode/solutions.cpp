@@ -162,6 +162,23 @@ class Solution {
     }
 
     /**
+     * Problem 11
+     * Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). 
+     * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). 
+     * Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+     */
+    int maxArea(vector<int>& height) {
+        int n = height.size();
+        int ans = 0;
+        for (int i = 1; i <= n - 1; ++i) {
+            for (int j = i + 1; j <= n; ++j) {
+                ans = max(ans, (j - i) * min(height[i - 1], height[j - 1]));
+            }
+        }
+        return ans;
+    }
+
+    /**
      * Problem 32
      * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
      * 
