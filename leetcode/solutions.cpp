@@ -721,6 +721,28 @@ class Solution {
     }
 
     /**
+     * Problem 132
+     * Given a string s, partition s such that every substring of the partition is a palindrome.
+     * Return the minimum cuts needed for a palindrome partitioning of s.
+     */
+    int minCut(string s) {
+        int n = s.size();
+        bool r[n + 10][n + 10]; // result[start][end]
+        int c[n + 10]; // c[0 ~ (n - 1)]
+        memset(r, true, sizeof(r));
+        for (int i = 0; i < s.size(); ++i) {
+            r[i][i] = true;
+            c[i] = (i > 0 ? 1 + c[i - 1] : 0);
+            for (int start = i - 1; start >= 0; --start) {
+                if (r[start][i] = (s[start] == s[i] && r[start + 1][i - 1])) {
+                    c[i] = min(c[i], start > 0 ? c[start - 1] + 1 : 0);
+                }
+            }
+        }
+        return c[n - 1];
+    }
+
+    /**
      * Problem 814
      * We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
      * Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
