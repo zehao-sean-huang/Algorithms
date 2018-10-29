@@ -622,9 +622,21 @@ class Solution {
      */
     bool hasPathSum(TreeNode* root, int sum) {
         if (root == nullptr) {
-            return sum == 0;
+            return false;
         }
-        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);
+        if (root->left == nullptr && root->right == nullptr) {
+            if (root->val == sum) {
+                return true;
+            }
+        }
+        bool result = false;
+        if (root->left != nullptr) {
+            result = result || hasPathSum(root->left, sum - root->val);
+        }
+        if (root->right != nullptr) {
+            result = result || hasPathSum(root->right, sum - root->val);
+        }
+        return result;
     }
 
     /**
