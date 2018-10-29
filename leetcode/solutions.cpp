@@ -77,6 +77,29 @@ class Solution {
     }
 
     /**
+     * Problem 3
+     * Given a string, find the length of the longest substring without repeating characters.
+     */
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        int r[n + 10];
+        int maxl = INT_MIN;
+        memset(r, 0, sizeof(r));
+        for (int i = 1; i <= n; ++i) {
+            r[i] = 1;
+            for (int j = i - 1; j >= i - r[i - 1]; --j) {
+                if (s[j - 1] == s[i - 1]) {
+                    break;
+                } else {
+                    r[i]++;
+                }
+            }
+            maxl = max(maxl, r[i]);
+        }
+        return max(maxl, 0);
+    }
+
+    /**
      * Problem 5
      * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
      * 
@@ -104,6 +127,25 @@ class Solution {
             }
         }
         return s.substr(rs, (re - rs + 1));
+    }
+
+    /**
+     * Problem 9
+     * Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+     */
+    bool isPalindrome(int x) {
+        string number = string(to_string(x));
+        int n = number.size();
+        if (n == 1) {
+            return true;
+        }
+        for (int i = 0; i < n / 2; ++i) {
+            // i = 0, n = 4, j = n - 1 - i
+            if (number[i] != number[n - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -573,6 +615,48 @@ class Solution {
     }
 
     /**
+     * Problem 100
+     * Given two binary trees, write a function to check if they are the same or not.
+     * Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+     */
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if (p == nullptr && q == nullptr) {
+            return true;
+        } else if (p == nullptr) {
+            return false;
+        } else if (q == nullptr) {
+            return false;
+        } else if (p->val != q->val) {
+            return false;
+        } else {
+            return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        }
+    }
+
+    /**
+     * Problem 112
+     * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+     */
+    bool hasPathSum(TreeNode* root, int sum) {
+        if (root == nullptr) {
+            return false;
+        }
+        if (root->left == nullptr && root->right == nullptr) {
+            if (root->val == sum) {
+                return true;
+            }
+        }
+        bool result = false;
+        if (root->left != nullptr) {
+            result = result || hasPathSum(root->left, sum - root->val);
+        }
+        if (root->right != nullptr) {
+            result = result || hasPathSum(root->right, sum - root->val);
+        }
+        return result;
+    }
+
+    /**
      * Problem 115
      * Given a string S and a string T, count the number of distinct subsequences of S which equals T.
      * 
@@ -654,5 +738,20 @@ class Solution {
             }
         }
         return root;
+    }
+    
+    /**
+     * Problem 746
+     * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
+     * Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
+     */
+    int minCostClimbingStairs(vector<int>& cost) {
+        int ans1 = 0, ans2 = 0;
+        for (int i = cost.size() - 1; i >= 0; i--) {
+            int ans0 = cost[i] + min(ans1, ans2);
+            ans2 = ans1;
+            ans1 = ans0;
+        }
+        return min(ans1, ans2);
     }
 };
