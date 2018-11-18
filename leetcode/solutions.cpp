@@ -764,7 +764,40 @@ class Solution {
         }
         return r[n];
     }
-    
+
+    /**
+     * Problem 140
+     * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
+     * add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
+     * 
+     * Tricks to pay attention to: use some god damn cache!
+     */
+    map<string, vector<string> > wordBreaks2Computed;
+    vector<string> wordBreak2(string s, vector<string>& wordDict) {
+        if (wordBreaks2Computed.find(s) == wordBreaks2Computed.end()) {
+            vector<string> result;
+            cout << s << endl;
+            int n = s.size(), m = wordDict.size();
+            for (int i = m - 1; i >= 0; --i) {
+                string &w = wordDict[i];
+                if (w.size() <= n) {
+                    cout << "w ==== " << w << endl;
+                    if (s.substr(n - w.size(), w.size()) == w) {
+                        if (w.size() == n) {
+                            result.push_back(w);
+                        } else {
+                            for (string subs : wordBreak2(s.substr(0, n - w.size()), wordDict)) {
+                                result.push_back(subs + " " + w);
+                            } 
+                        }
+                    }
+                }
+            }
+            wordBreaks2Computed[s] = result;
+        }
+        return wordBreaks2Computed[s];
+    }
+
     /**
      * Problem 746
      * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
