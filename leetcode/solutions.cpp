@@ -799,6 +799,28 @@ class Solution {
     }
 
     /**
+     * Problem 198
+     * You are a professional robber planning to rob houses along a street. 
+     * Each house has a certain amount of money stashed, the only constraint stopping you from 
+     * robbing each of them is that adjacent houses have security system connected and it will 
+     * automatically contact the police if two adjacent houses were broken into on the same night.
+     * 
+     * Given a list of non-negative integers representing the amount of money of each house, 
+     * determine the maximum amount of money you can rob tonight without alerting the police.
+     */
+    int rob(vector<int>& nums) {
+        if (nums.empty()) {
+            return 0;
+        }
+        int n = nums.size(), r[n + 10];
+        r[1] = nums[0];
+        for (int i = 2; i <= n; ++i) {
+            r[i] = max(nums[i - 1] + r[i - 2], r[i - 1]);
+        }
+        return r[n];
+    }
+
+    /**
      * Problem 746
      * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
      * Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
