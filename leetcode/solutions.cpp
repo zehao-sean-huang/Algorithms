@@ -799,6 +799,7 @@ class Solution {
     }
 
     /**
+<<<<<<< HEAD
      * Problem 174
      * The demons had captured the princess (P) and imprisoned her in the bottom-right corner of a dungeon. 
      * The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight (K) was initially positioned 
@@ -824,6 +825,27 @@ class Solution {
             }
         }
         return r[0][0];
+=======
+     * Problem 198
+     * You are a professional robber planning to rob houses along a street. 
+     * Each house has a certain amount of money stashed, the only constraint stopping you from 
+     * robbing each of them is that adjacent houses have security system connected and it will 
+     * automatically contact the police if two adjacent houses were broken into on the same night.
+     * 
+     * Given a list of non-negative integers representing the amount of money of each house, 
+     * determine the maximum amount of money you can rob tonight without alerting the police.
+     */
+    int rob(vector<int>& nums) {
+        if (nums.empty()) {
+            return 0;
+        }
+        int n = nums.size(), r[n + 10];
+        r[1] = nums[0];
+        for (int i = 2; i <= n; ++i) {
+            r[i] = max(nums[i - 1] + r[i - 2], r[i - 1]);
+        }
+        return r[n];
+>>>>>>> 95c77c147a9e914d988301893cc5773b44e18492
     }
 
     /**
