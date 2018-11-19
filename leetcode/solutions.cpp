@@ -33,6 +33,16 @@ class Solution {
         cout << endl;
     }
 
+    void printVector(vector<vector<int> > &g) {
+        for (vector<int> &v : g) {
+            printVector(v);
+        }
+    }
+    
+    void printPair(pair<int, int>& p) {
+        cout << p.first << " " << p.second << endl;
+    }
+
     /**
      * Problem 1
      */ 
