@@ -859,6 +859,28 @@ class Solution {
     }
 
     /**
+     * Problem 279
+     * Given a positive integer n, find the least number of perfect square numbers 
+     * (for example, 1, 4, 9, 16, ...) which sum to n.
+     */
+    int numSquares(int n) {
+        int r[n + 10];
+        for (int i = 1; i <= n; ++i) {
+            int t = int(sqrt(i));
+            if (t * t == i) {
+                r[i] = 1;
+            } else {
+                r[i] = INT_MAX;
+                for (int j = t; j >= 1; --j) {
+                    r[i] = min(r[i], r[i - j * j] + 1);
+                }
+            }
+        }
+        return r[n];
+    }
+
+
+    /**
      * Problem 746
      * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
      * Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
@@ -891,7 +913,7 @@ class Solution {
         }
         return r;
     }
-    
+
     /**
      * Problem 814
      * We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
