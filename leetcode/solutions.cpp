@@ -892,4 +892,23 @@ class Solution {
         }
         return root;
     }
+
+    /**
+     * Problem 938
+     * Given the root node of a binary search tree, return the sum of values of all nodes with value between L and R (inclusive).
+     * The binary search tree is guaranteed to have unique values.
+     */
+    int rangeSumBST(TreeNode* root, int L, int R) {
+        if (root == nullptr) {
+            return 0;
+        }
+        int &v = root->val;
+        if (v < L) {
+            return rangeSumBST(root->right, L, R);
+        } else if (v > R) {
+            return rangeSumBST(root->left, L, R);
+        } else {
+            return v + rangeSumBST(root->left, L, R) + rangeSumBST(root->right, L, R);
+        }
+    }
 };
