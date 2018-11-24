@@ -915,6 +915,32 @@ class Solution {
     }
 
     /**
+     * Problem 807
+     * In a 2 dimensional array grid, each value grid[i][j] represents the height of a building located there. 
+     * We are allowed to increase the height of any number of buildings, by any amount (the amounts can be 
+     * different for different buildings). Height 0 is considered to be a building as well.
+     */
+    int maxIncreaseKeepingSkyline(vector<vector<int> >& grid) {
+        int m = grid.size(), n = grid[0].size(); 
+        int rr[m + 10], rc[n + 10];
+        memset(rr, INT_MIN, sizeof(rr));
+        memset(rc, INT_MIN, sizeof(rc));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                rr[i] = max(rr[i], grid[i][j]);
+                rc[j] = max(rc[j], grid[i][j]);
+            }
+        }
+        int r = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                r += min(rr[i], rc[j]) - grid[i][j];
+            }
+        }
+        return r;
+    }
+
+    /**
      * Problem 814
      * We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
      * Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
