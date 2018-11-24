@@ -961,6 +961,28 @@ class Solution {
     }
 
     /**
+     * Problem 929
+     * Every email consists of a local name and a domain name, separated by the @ sign.
+     */
+    int numUniqueEmails(vector<string>& emails) {
+        set<string> u;
+        for (string &e : emails) {
+            int at = e.find("@");
+            string domain = e.substr(e.find("@") + 1);
+            string username = e.substr(0, e.find("@"));
+            if (username.find("+") != string::npos) {
+                username = username.substr(0, username.find("+"));
+            }
+            while (username.find(".") != string::npos) {
+                int dot = username.find(".");
+                username = username.substr(0, dot) + username.substr(dot + 1);
+            }
+            u.insert(username + "@" + domain);
+        }
+        return u.size();
+    }
+
+    /**
      * Problem 938
      * Given the root node of a binary search tree, return the sum of values of all nodes with value between L and R (inclusive).
      * The binary search tree is guaranteed to have unique values.
