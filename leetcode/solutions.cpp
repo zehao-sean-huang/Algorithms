@@ -644,6 +644,26 @@ class Solution {
     }
 
     /**
+     * Problem 101
+     * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+     */
+    bool isSymmetricHelper(TreeNode* first, TreeNode* second) {
+        if (first == nullptr && second == nullptr) {
+            return true;
+        } else if (first == nullptr || second == nullptr) {
+            return false;
+        } else {
+            return first->val == second->val
+                   && isSymmetricHelper(first->left, second->right)
+                   && isSymmetricHelper(first->right, second->left);
+        }
+    }
+    
+    bool isSymmetric(TreeNode* root) {
+        return isSymmetricHelper(root, root);
+    }
+
+    /**
      * Problem 112
      * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
      */
