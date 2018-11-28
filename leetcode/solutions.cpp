@@ -693,6 +693,24 @@ class Solution {
     }
 
     /**
+     * Problem 104
+     * Given a binary tree, find its maximum depth.
+     */
+    int maxDepth(TreeNode* root) {
+        if (root == nullptr) {
+            return 0;
+        } else if (root->left == nullptr && root->right == nullptr) {
+            return 1;
+        } else if (root->left == nullptr) {
+            return maxDepth(root->right) + 1;
+        } else if (root->right == nullptr) {
+            return maxDepth(root->left) + 1;
+        } else {
+            return max(maxDepth(root->right), maxDepth(root->left)) + 1;
+        }
+    }
+
+    /**
      * Problem 111
      * Minimum Depth of Binary Tree
      */
@@ -969,6 +987,22 @@ class Solution {
             }
         }
         return r[n];
+    }
+
+    /**
+     * Problem 559
+     * Given a n-ary tree, find its maximum depth.
+     */
+    int maxDepth(Node* root) {
+        if (root == nullptr) {
+            return 0;
+        } else {
+            int r = 0;
+            for (Node* child : root->children) {
+                r = max(r, maxDepth(child) + 1);
+            }
+            return r;
+        }
     }
 
     /**
