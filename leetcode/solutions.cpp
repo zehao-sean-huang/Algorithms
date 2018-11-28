@@ -851,6 +851,22 @@ class Solution {
     }
 
     /**
+     * Problem 144
+     * Given a binary tree, return the preorder traversal of its nodes' values.
+     */
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> r;
+        if (root != nullptr) {
+            r.push_back(root->val);
+            vector<int> rl = preorderTraversal(root->left);
+            vector<int> rr = preorderTraversal(root->right);
+            r.insert(r.end(), rl.begin(), rl.end());
+            r.insert(r.end(), rr.begin(), rr.end());
+        }
+        return r;
+    }
+
+    /**
      * Problem 174
      * The demons had captured the princess (P) and imprisoned her in the bottom-right corner 
      * of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant 
