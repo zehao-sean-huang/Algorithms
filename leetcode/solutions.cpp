@@ -925,6 +925,26 @@ class Solution {
     }
 
     /**
+     * Problem 617
+     * Given two binary trees and imagine that when you put one of them to cover the other, some 
+     * nodes of the two trees are overlapped while the others are not.
+     */
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
+        if (t1 == nullptr && t2 == nullptr) {
+            return nullptr;
+        } else if (t1 == nullptr) {
+            return t2;
+        } else if (t2 == nullptr) {
+            return t1;
+        } else {
+            TreeNode* r = new TreeNode(t1->val + t2->val);
+            r->left = mergeTrees(t1->left, t2->left);
+            r->right = mergeTrees(t1->right, t2->right);
+            return r;
+        }
+    }
+
+    /**
      * Problem 700
      * Given the root node of a binary search tree (BST) and a value. You need to find 
      * the node in the BST that the node's value equals the given value. Return the subtree 
