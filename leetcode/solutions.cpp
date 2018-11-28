@@ -954,6 +954,29 @@ class Solution {
     }
 
     /**
+     * Problem 589
+     * Given an n-ary tree, return the preorder traversal of its nodes' values.
+     * the solution is written iteratively
+     */
+    vector<int> preorder(Node* root) {
+        stack<Node*> s;
+        vector<int> r;
+        s.push(root);
+        while (!s.empty()) {
+            Node* c = s.top();
+            s.pop();
+            if (c != nullptr) {
+                r.push_back(c->val);
+                vector<Node*> cd = c->children;
+                for (vector<Node*>::reverse_iterator it = cd.rbegin(); it != cd.rend(); ++it) {
+                    s.push(*it);
+                }
+            }
+        }
+        return r;
+    }
+
+    /**
      * Problem 617
      * Given two binary trees and imagine that when you put one of them to cover the other, some 
      * nodes of the two trees are overlapped while the others are not.
