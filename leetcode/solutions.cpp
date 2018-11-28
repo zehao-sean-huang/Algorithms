@@ -924,7 +924,29 @@ class Solution {
         return r[n];
     }
 
-
+    /**
+     * Problem 701
+     * Given the root node of a binary search tree (BST) and a value to be inserted into 
+     * the tree, insert the value into the BST. Return the root node of the BST after the 
+     * insertion. It is guaranteed that the new value does not exist in the original BST.
+     */
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (val < root->val) {
+            if (root->left == nullptr) {
+                root->left = new TreeNode(val);
+            } else {
+                insertIntoBST(root->left, val);
+            }
+        } else {
+            if (root->right == nullptr) {
+                root->right = new TreeNode(val);
+            } else {
+                insertIntoBST(root->right, val);
+            }
+        }
+        return root;
+    }
+    
     /**
      * Problem 746
      * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
