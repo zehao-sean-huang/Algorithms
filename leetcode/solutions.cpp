@@ -74,11 +74,6 @@ class Solution {
 
     /**
      * Problem 2
-     * 
-     * You are given two non-empty linked lists representing two non-negative integers. 
-     * The digits are stored in reverse order and each of their nodes contain a single digit.
-     * Add the two numbers and return it as a linked list.
-     * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
      */
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* dummyHead = new ListNode(0);
@@ -102,7 +97,6 @@ class Solution {
 
     /**
      * Problem 3
-     * Given a string, find the length of the longest substring without repeating characters.
      */
     int lengthOfLongestSubstring(string s) {
         int n = s.size();
@@ -125,17 +119,6 @@ class Solution {
 
     /**
      * Problem 5
-     * Given a string s, find the longest palindromic substring in s. You may assume that 
-     * the maximum length of s is 1000.
-     * 
-     * Example 1:
-     * Input: "babad"
-     * Output: "bab"
-     * Note: "aba" is also a valid answer.
-     * 
-     * Example 2:
-     * Input: "cbbd"
-     * Output: "bb"
      */
     string longestPalindrome(string s) {
         bool result[1010][1010]; // result[start][end]
@@ -156,8 +139,6 @@ class Solution {
 
     /**
      * Problem 9
-     * Determine whether an integer is a palindrome. An integer is a palindrome when it 
-     * reads the same backward as forward.
      */
     bool isPalindrome(int x) {
         string number = string(to_string(x));
@@ -176,19 +157,7 @@ class Solution {
 
     /**
      * Problem 10
-     * Given an input string (s) and a pattern (p), implement regular expression matching with 
-     * support for '.' and '*'.
-     * '.' Matches any single character.
-     * '*' Matches zero or more of the preceding element.
-     * The matching should cover the entire input string (not partial).
-     * 
-     * Note:
-     * 
-     * s could be empty and contains only lowercase letters a-z.
-     * p could be empty and contains only lowercase letters a-z, and characters like . or *.
-     * 
      */
-
     bool isMatch(string s, string p) {
         // base cases
         if (s.empty() && p.empty()) {
@@ -232,11 +201,6 @@ class Solution {
 
     /**
      * Problem 11
-     * Given n non-negative integers a1, a2, ..., an , where each represents 
-     * a point at coordinate (i, ai). n vertical lines are drawn such that the 
-     * two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which 
-     * together with x-axis forms a container, such that the container contains 
-     * the most water.
      */
     int maxArea(vector<int>& height) {
         int n = height.size();
@@ -251,19 +215,6 @@ class Solution {
 
     /**
      * Problem 32
-     * Given a string containing just the characters '(' and ')', find the 
-     * length of the longest valid (well-formed) parentheses substring.
-     * 
-     * Example 1:
-     * 
-     * Input: "(()"
-     * Output: 2
-     * Explanation: The longest valid parentheses substring is "()"
-     * Example 2:
-     * 
-     * Input: ")()())"
-     * Output: 4
-     * Explanation: The longest valid parentheses substring is "()()"
      */
     int longestValidParentheses(string s) {
         int maxr = 0;
@@ -284,17 +235,6 @@ class Solution {
 
     /**
      * Problem 44
-     * Given an input string (s) and a pattern (p), implement wildcard pattern 
-     * matching with support for '?' and '*'.
-     * 
-     * '?' Matches any single character.
-     * '*' Matches any sequence of characters (including the empty sequence).
-     * The matching should cover the entire input string (not partial).
-     * 
-     * Note:
-     * 
-     * s could be empty and contains only lowercase letters a-z.
-     * p could be empty and contains only lowercase letters a-z, and characters like ? or *.
      */
     bool isMatchWildcard(string s, string p) {
         if (p.empty()) {
@@ -324,17 +264,6 @@ class Solution {
 
     /**
      * Problem 53
-     * Given an integer array nums, find the contiguous subarray (containing at 
-     * least one number) which has the largest sum and return its sum.
-     * Example:
-     * 
-     * Input: [-2,1,-3,4,-1,2,1,-5,4],
-     * Output: 6
-     * Explanation: [4,-1,2,1] has the largest sum = 6.
-     * Follow up:
-     * 
-     * If you have figured out the O(n) solution, try coding another solution 
-     * using the divide and conquer approach, which is more subtle.
      */
     int maxSubArray(vector<int>& nums) {
         if (nums.empty()) {
@@ -432,14 +361,6 @@ class Solution {
 
     /**
      * Problem 72
-     * Given two words word1 and word2, find the minimum number of operations 
-     * required to convert word1 to word2.
-     * 
-     * You have the following 3 operations permitted on a word:
-     * 
-     * Insert a character
-     * Delete a character
-     * Replace a character
      */
     int minDistance(string word1, string word2) {
         int m = word1.size(), n = word2.size();
@@ -463,8 +384,6 @@ class Solution {
 
     /**
      * Problem 87
-     * Given two strings s1 and s2 of the same length, determine if 
-     * s2 is a scrambled string of s1.
      */
     bool isScramble(string s1, string s2) {
         int n = s1.size();
@@ -494,15 +413,6 @@ class Solution {
 
     /**
      * Problem 91
-     * A message containing letters from A-Z is being encoded 
-     * to numbers using the following mapping.
-     * 
-     * 'A' -> 1
-     * 'B' -> 2
-     * ...
-     * 'Z' -> 26
-     * Given a non-empty string containing only digits, determine 
-     * the total number of ways to decode it.
      */
     int numDecodings(string s) {
         int n = s.size();
@@ -525,7 +435,6 @@ class Solution {
 
     /**
      * Problem 94
-     * Given a binary tree, return the inorder traversal of its nodes' values.
      */
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> r;
@@ -541,8 +450,6 @@ class Solution {
 
     /**
      * Problem 95
-     * Given an integer n, generate all structurally unique BST's 
-     * (binary search trees) that store values 1 ... n.
      */
     vector<TreeNode*> generateTreesHelper(int start, int end) {
         vector<TreeNode*> r;
@@ -580,7 +487,6 @@ class Solution {
 
     /**
      * Problem 96
-     * Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
      */
     int numTrees(int n) {
         int r[n + 5];
@@ -598,7 +504,6 @@ class Solution {
 
     /**
      * Problem 97
-     * Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
      */
     bool isInterleave(string s1, string s2, string s3) {
         if (s1.size() + s2.size() != s3.size()) {
@@ -630,13 +535,6 @@ class Solution {
 
     /**
      * Problem 98
-     * Given a binary tree, determine if it is a valid binary search tree (BST).
-     *
-     * Assume a BST is defined as follows:
-     *
-     * The left subtree of a node contains only nodes with keys less than the node's key.
-     * The right subtree of a node contains only nodes with keys greater than the node's key.
-     * Both the left and right subtrees must also be binary search trees.
      */
     bool isValidBST(TreeNode* root, long long min, long long max) {
         if (root == nullptr) {
@@ -654,9 +552,6 @@ class Solution {
 
     /**
      * Problem 100
-     * Given two binary trees, write a function to check if they are the same or not.
-     * Two binary trees are considered the same if they are structurally identical 
-     * and the nodes have the same value.
      */
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if (p == nullptr && q == nullptr) {
@@ -674,7 +569,6 @@ class Solution {
 
     /**
      * Problem 101
-     * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
      */
     bool isSymmetricHelper(TreeNode* first, TreeNode* second) {
         if (first == nullptr && second == nullptr) {
@@ -694,7 +588,6 @@ class Solution {
 
     /**
      * Problem 104
-     * Given a binary tree, find its maximum depth.
      */
     int maxDepth(TreeNode* root) {
         if (root == nullptr) {
@@ -712,7 +605,6 @@ class Solution {
 
     /**
      * Problem 111
-     * Minimum Depth of Binary Tree
      */
     int minDepth(TreeNode* root) {
         if (root == nullptr) {
@@ -730,8 +622,6 @@ class Solution {
 
     /**
      * Problem 112
-     * Given a binary tree and a sum, determine if the tree has a 
-     * root-to-leaf path such that adding up all the values along the path equals the given sum.
      */
     bool hasPathSum(TreeNode* root, int sum) {
         if (root == nullptr) {
@@ -754,11 +644,6 @@ class Solution {
 
     /**
      * Problem 115
-     * Given a string S and a string T, count the number of distinct subsequences of S which equals T.
-     * 
-     * A subsequence of a string is a new string which is formed from the original string by 
-     * deleting some (can be none) of the characters without disturbing the relative positions of 
-     * the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
      */
     int numDistinct(string s, string t) {
         int m = s.size(), n = t.size();
@@ -780,8 +665,6 @@ class Solution {
 
     /**
      * Problem 120
-     * Given a triangle, find the minimum path sum from top to bottom. Each step you may 
-     * move to adjacent numbers on the row below.
      */
     int minimumTotal(vector<vector<int> >& triangle) {
         if (triangle.empty()) {
@@ -798,10 +681,6 @@ class Solution {
 
     /**
      * Problem 121
-     * Say you have an array for which the ith element is the price of a given stock on day i.
-     * If you were only permitted to complete at most one transaction (i.e., buy one and sell 
-     * one share of the stock), design an algorithm to find the maximum profit.
-     * Note that you cannot sell a stock before you buy one.
      */
     int maxProfit(vector<int>& prices) {
         int n = prices.size(), maxp = 0;
@@ -822,8 +701,6 @@ class Solution {
 
     /**
      * Problem 132
-     * Given a string s, partition s such that every substring of the partition is a palindrome.
-     * Return the minimum cuts needed for a palindrome partitioning of s.
      */
     int minCut(string s) {
         int n = s.size();
@@ -844,8 +721,6 @@ class Solution {
 
     /**
      * Problem 139
-     * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
-     * determine if s can be segmented into a space-separated sequence of one or more dictionary words.
      */
     bool wordBreak(string s, vector<string>& wordDict) {
         int n = s.size(), m = wordDict.size();
@@ -867,11 +742,6 @@ class Solution {
 
     /**
      * Problem 140
-     * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
-     * add spaces in s to construct a sentence where each word is a valid dictionary word. 
-     * Return all such possible sentences.
-     * 
-     * Tricks to pay attention to: use some god damn cache!
      */
     map<string, vector<string> > wordBreaks2Computed;
     vector<string> wordBreak2(string s, vector<string>& wordDict) {
@@ -901,7 +771,6 @@ class Solution {
 
     /**
      * Problem 144
-     * Given a binary tree, return the preorder traversal of its nodes' values.
      */
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> r;
@@ -917,20 +786,6 @@ class Solution {
 
     /**
      * Problem 174
-     * The demons had captured the princess (P) and imprisoned her in the bottom-right corner 
-     * of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant 
-     * knight (K) was initially positioned in the top-left room and must fight his way through 
-     * the dungeon to rescue the princess.
-     * 
-     * The knight has an initial health point represented by a positive integer. If at any 
-     * point his health point drops to 0 or below, he dies immediately.
-     * 
-     * Some of the rooms are guarded by demons, so the knight loses health (negative integers) 
-     * upon entering these rooms; other rooms are either empty (0's) or contain magic orbs that 
-     * increase the knight's health (positive integers).
-     * 
-     * In order to reach the princess as quickly as possible, the knight decides to move only 
-     * rightward or downward in each step.
      */
     int calculateMinimumHP(vector<vector<int>>& dungeon) {
         int m = dungeon.size(), n = dungeon[0].size();
@@ -948,13 +803,6 @@ class Solution {
 
     /**
      * Problem 198
-     * You are a professional robber planning to rob houses along a street. 
-     * Each house has a certain amount of money stashed, the only constraint stopping you from 
-     * robbing each of them is that adjacent houses have security system connected and it will 
-     * automatically contact the police if two adjacent houses were broken into on the same night.
-     * 
-     * Given a list of non-negative integers representing the amount of money of each house, 
-     * determine the maximum amount of money you can rob tonight without alerting the police.
      */
     int rob(vector<int>& nums) {
         if (nums.empty()) {
@@ -970,8 +818,6 @@ class Solution {
 
     /**
      * Problem 279
-     * Given a positive integer n, find the least number of perfect square numbers 
-     * (for example, 1, 4, 9, 16, ...) which sum to n.
      */
     int numSquares(int n) {
         int r[n + 10];
@@ -991,7 +837,6 @@ class Solution {
 
     /**
      * Problem 559
-     * Given a n-ary tree, find its maximum depth.
      */
     int maxDepth(Node* root) {
         if (root == nullptr) {
@@ -1007,8 +852,6 @@ class Solution {
 
     /**
      * Problem 589
-     * Given an n-ary tree, return the preorder traversal of its nodes' values.
-     * the solution is written iteratively
      */
     vector<int> preorder(Node* root) {
         stack<Node*> s;
@@ -1030,8 +873,6 @@ class Solution {
 
     /**
      * Problem 617
-     * Given two binary trees and imagine that when you put one of them to cover the other, some 
-     * nodes of the two trees are overlapped while the others are not.
      */
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
         if (t1 == nullptr && t2 == nullptr) {
@@ -1050,9 +891,6 @@ class Solution {
 
     /**
      * Problem 700
-     * Given the root node of a binary search tree (BST) and a value. You need to find 
-     * the node in the BST that the node's value equals the given value. Return the subtree 
-     * rooted with that node. If such node doesn't exist, you should return NULL.
      */
     TreeNode* searchBST(TreeNode* root, int val) {
         if (root == nullptr) {
@@ -1068,9 +906,6 @@ class Solution {
 
     /**
      * Problem 701
-     * Given the root node of a binary search tree (BST) and a value to be inserted into 
-     * the tree, insert the value into the BST. Return the root node of the BST after the 
-     * insertion. It is guaranteed that the new value does not exist in the original BST.
      */
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if (val < root->val) {
@@ -1091,10 +926,6 @@ class Solution {
     
     /**
      * Problem 746
-     * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
-     * Once you pay the cost, you can either climb one or two steps. You need to find minimum 
-     * cost to reach the top of the floor, and you can either start from the step with index 0, 
-     * or the step with index 1.
      */
     int minCostClimbingStairs(vector<int>& cost) {
         int ans1 = 0, ans2 = 0;
@@ -1108,12 +939,6 @@ class Solution {
 
     /**
      * Problem 771
-     * You're given strings J representing the types of stones that are jewels, and S representing 
-     * the stones you have.  Each character in S is a type of stone you have.  You want to know how 
-     * many of the stones you have are also jewels.
-     * 
-     * The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters 
-     * are case sensitive, so "a" is considered a different type of stone from "A".
      */
     int numJewelsInStones(string J, string S) {
         int r = 0;
@@ -1127,10 +952,6 @@ class Solution {
 
     /**
      * Problem 807
-     * In a 2 dimensional array grid, each value grid[i][j] represents the height of a 
-     * building located there. We are allowed to increase the height of any number of buildings, 
-     * by any amount (the amounts can be different for different buildings). Height 0 is considered 
-     * to be a building as well.
      */
     int maxIncreaseKeepingSkyline(vector<vector<int> >& grid) {
         int m = grid.size(), n = grid[0].size(); 
@@ -1154,9 +975,6 @@ class Solution {
 
     /**
      * Problem 814
-     * We are given the head node root of a binary tree, where additionally every node's value is 
-     * either a 0 or a 1. Return the same tree where every subtree (of the given tree) not 
-     * containing a 1 has been removed.
      */
     TreeNode* pruneTree(TreeNode* root) {
         if (root->left != nullptr) {
@@ -1175,7 +993,6 @@ class Solution {
 
     /**
      * Problem 929
-     * Every email consists of a local name and a domain name, separated by the @ sign.
      */
     int numUniqueEmails(vector<string>& emails) {
         set<string> u;
@@ -1197,8 +1014,6 @@ class Solution {
 
     /**
      * Problem 938
-     * Given the root node of a binary search tree, return the sum of values of all nodes 
-     * with value between L and R (inclusive). The binary search tree is guaranteed to have unique values.
      */
     int rangeSumBST(TreeNode* root, int L, int R) {
         if (root == nullptr) {
