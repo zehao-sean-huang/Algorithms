@@ -990,6 +990,28 @@ class Solution {
         }
         return root;
     }
+    
+    /**
+     * Problem 872
+     */
+    vector<int> getLeaves(TreeNode* root) {
+        vector<int> r;
+        if (root != nullptr) {
+            if (root->left == nullptr && root->right == nullptr) {
+                r.push_back(root->val);
+            } else {
+                vector<int> rl = getLeaves(root->left);
+                vector<int> rr = getLeaves(root->right);
+                r.insert(r.end(), rl.begin(), rl.end());
+                r.insert(r.end(), rr.begin(), rr.end());
+            }
+        } 
+        return r;
+    }
+
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        return getLeaves(root1) == getLeaves(root2);
+    }
 
     /**
      * Problem 929
