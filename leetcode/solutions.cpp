@@ -787,7 +787,7 @@ class Solution {
     /**
      * Problem 174
      */
-    int calculateMinimumHP(vector<vector<int>>& dungeon) {
+    int calculateMinimumHP(vector<vector<int> >& dungeon) {
         int m = dungeon.size(), n = dungeon[0].size();
         int r[m + 10][n + 10];
         memset(r, 1, sizeof(r));
