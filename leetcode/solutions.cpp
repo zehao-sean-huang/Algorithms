@@ -872,6 +872,21 @@ class Solution {
     }
 
     /**
+     * Problem 590
+     */
+    vector<int> postorder(Node* root) {
+        vector<int> result;
+        if (root != nullptr) {
+            for (Node* child : root->children) {
+                vector<int> childResult = postorder(child);
+                result.insert(result.end(), childResult.begin(), childResult.end());
+            }
+            result.push_back(root->val);
+        }
+        return result;
+    }
+
+    /**
      * Problem 617
      */
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
