@@ -785,6 +785,21 @@ class Solution {
     }
 
     /**
+     * Problem 145
+     */
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
+        if (root != nullptr) {
+            vector<int> rl = postorderTraversal(root->left);
+            vector<int> rr = postorderTraversal(root->right);
+            result.insert(result.end(), rl.begin(), rl.end());
+            result.insert(result.end(), rr.begin(), rr.end());
+            result.push_back(root->val);
+        }
+        return result;
+    }
+
+    /**
      * Problem 174
      */
     int calculateMinimumHP(vector<vector<int> >& dungeon) {
