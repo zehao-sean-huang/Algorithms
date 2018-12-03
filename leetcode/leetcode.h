@@ -97,6 +97,16 @@ vector<int> readVector(int size) {
     return result;
 }
 
+vector<string> readStringVector(int size) {
+    vector<string> result;
+    for (int i = 1; i <= size; ++i) {
+        string temps;
+        cin >> temps;
+        result.push_back(temps);
+    }
+    return result;
+}
+
 vector<vector<int> > readGrid(int m, int n) {
     vector<vector<int> > result;
     for (int i = 1; i <= m; ++i) {
