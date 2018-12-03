@@ -60,6 +60,27 @@ void printLinkedList(ListNode* head) {
     cout << endl;
 }
 
+void printBinaryTree(TreeNode* root) {
+    if (root == nullptr) {
+        cout << "" << endl;
+    }
+    queue<TreeNode*> q;
+    string result = "";
+    q.push(root);
+    while (!q.empty()) {
+        TreeNode* node = q.front();
+        if (node == nullptr) {
+            result = result + "null,";
+        } else {
+            result = result + string(to_string(node->val)) + ",";
+            q.push(node->left);
+            q.push(node->right);
+        }
+        q.pop();
+    }
+    cout << "[" + result.substr(0, result.size() - 1) + "]" << endl;
+}
+
 int readNumber() {
     int result;
     cin >> result;
