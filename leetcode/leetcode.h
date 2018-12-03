@@ -28,24 +28,27 @@ public:
     }
 };
 
-void printVector(vector<int> v) {
+template <class DataType>
+void printVector(vector<DataType> v) {
     if (v.empty()) {
         cout << "<empty vector>" << endl;
     } else {
-        for (int i : v) {
+        for (DataType i : v) {
             cout << i << " ";
         }
     }
     cout << endl;
 }
 
-void printGrid(vector<vector<int> > g) {
-    for (vector<int> &v : g) {
+template <class DataType>
+void printGrid(vector<vector<DataType> > g) {
+    for (vector<DataType> &v : g) {
         printVector(v);
     }
 }
 
-void printPair(pair<int, int> p) {
+template <class DataType1, class DataType2>
+void printPair(pair<DataType1, DataType2> p) {
     cout << p.first << " " << p.second << endl;
 }
 
@@ -91,4 +94,43 @@ ListNode* readLinkedList(int n) {
         cin >> current->val;
     }
     return head;
+}
+
+vector<string> split(string s, string d) {
+    vector<string> values;
+    int index = 0;
+    while (s.find(d, index) != string::npos) {
+        values.push_back(s.substr(index, s.find(d, index) - index));
+        index = s.find(d, index) + 1;
+    }
+    values.push_back(s.substr(index, s.size() - index));
+    return values;
+}
+
+TreeNode* readBinaryTree() {
+    string line = "";
+    cin >> line;
+    line = line.substr(1, line.size() - 2);
+    if (line == "") {
+        return nullptr;
+    }
+    queue<TreeNode*> q;
+    vector<string> values = split(line, ",");
+    TreeNode* root = new TreeNode(stoi(values[0]));
+    q.push(root);
+    for (int i = 1; i < values.size(); i++) {
+        TreeNode* parent = q.front();
+        if (values[i] != "null" && parent != nullptr) {
+            parent->left = new TreeNode(stoi(values[i]));
+            q.push(parent->left);
+        }
+        if (i + 1 < values.size()) {
+            if (values[++i] != "null" && parent != nullptr) {
+                parent->right = new TreeNode(stoi(values[i]));
+                q.push(parent->right);
+            }
+        }
+        q.pop();
+    }
+    return root;
 }
