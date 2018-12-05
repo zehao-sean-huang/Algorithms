@@ -5,7 +5,6 @@ main.dSYM
 main
 main.in
 main.out
-compile.sh
 test
 test.in
 test.out
