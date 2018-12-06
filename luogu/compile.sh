@@ -2,7 +2,9 @@
 
 function compile () {
     echo "compiling problem $1 .........";
-    cd $1; c++ -g main.cpp -w -o main; cd ..;
+    cd $1;
+    c++ -g main.cpp -w -o main &
+    cd ..;
     echo "compiling problem $1 finished!";
     echo "";
 }
