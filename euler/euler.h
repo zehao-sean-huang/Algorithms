@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define ll long long
 
 using namespace std;
 
@@ -132,4 +133,20 @@ string power(int base, int exponent) {
         }
         return result;
     }
+}
+
+bool prime(ll n, set<ll> &primes) {
+    if (primes.find(n) == primes.end()) {
+        if (n == 2 || n == 3) {
+            primes.insert(n);
+            return true;
+        }
+        for (int p : primes) {
+            if (n % p == 0) {
+                return false;
+            }
+        }
+        primes.insert(n);
+    }
+    return true;
 }
