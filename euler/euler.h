@@ -138,6 +138,9 @@ string power(int base, int exponent) {
 
 bool prime(ll n, set<ll> &primes) {
     if (primes.find(n) == primes.end()) {
+        if (n == 1) {
+            return false;
+        }
         for (ll i = 2; i <= int(sqrt(n)); ++i) {
             if (n % i == 0) {
                 return false;
