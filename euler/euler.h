@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define str(x) string(to_string(x))
+#define len(s) s.size()
+#define chr(x) char(x + '0')
+#define ord(x) x - '0'
 
 using namespace std;
 
@@ -79,6 +82,17 @@ string subtract(string str1, string str2) {
     reverse(str.begin(), str.end()); 
     return str; 
 } 
+
+vector<string> split(string s, string d) {
+    vector<string> values;
+    int index = 0;
+    while (s.find(d, index) != string::npos) {
+        values.push_back(s.substr(index, s.find(d, index) - index));
+        index = s.find(d, index) + 1;
+    }
+    values.push_back(s.substr(index, s.size() - index));
+    return values;
+}
 
 string multiply(string num1, string num2) { 
     int n1 = num1.size(); 
