@@ -1,4 +1,9 @@
 #include <bits/stdc++.h>
+#define ll long long
+#define str(x) string(to_string(x))
+#define ord(x) int(x - '0')
+#define chr(x) char(x + '0')
+#define len(x) x.size()
 
 using namespace std;
 
@@ -135,12 +140,14 @@ ListNode* readLinkedList(int n) {
 
 vector<string> split(string s, string d) {
     vector<string> values;
-    int index = 0;
-    while (s.find(d, index) != string::npos) {
-        values.push_back(s.substr(index, s.find(d, index) - index));
-        index = s.find(d, index) + 1;
+    if (!s.empty()) {
+        int index = 0;
+        while (s.find(d, index) != string::npos) {
+            values.push_back(s.substr(index, s.find(d, index) - index));
+            index = s.find(d, index) + len(d);
+        }
+        values.push_back(s.substr(index, s.size() - index));
     }
-    values.push_back(s.substr(index, s.size() - index));
     return values;
 }
 
@@ -170,4 +177,18 @@ TreeNode* readBinaryTree() {
         q.pop();
     }
     return root;
+}
+
+vector<vector<int> > readGraph() {
+    string s = "";
+    vector<vector<int> > graph;
+    while (s.empty()) getline(cin, s);
+    for (string ss : split(s.substr(2, len(s) - 4), "], [")) {
+        vector<int> nv;
+        for (string ns : split(ss.substr(0, ss.size()), ",")) {
+            nv.push_back(stoi(ns));
+        }
+        graph.push_back(nv);
+    }
+    return graph;
 }

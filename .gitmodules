@@ -1,0 +1,3 @@
+[submodule "hashcode"]
+	path = hashcode
+	url = git@github.com:GodfatherSean/hashcode.git

@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define str(x) string(to_string(x))
+#define len(s) s.size()
+#define chr(x) char(x + '0')
+#define ord(x) x - '0'
 
 using namespace std;
 
@@ -79,6 +83,17 @@ string subtract(string str1, string str2) {
     return str; 
 } 
 
+vector<string> split(string s, string d) {
+    vector<string> values;
+    int index = 0;
+    while (s.find(d, index) != string::npos) {
+        values.push_back(s.substr(index, s.find(d, index) - index));
+        index = s.find(d, index) + 1;
+    }
+    values.push_back(s.substr(index, s.size() - index));
+    return values;
+}
+
 string multiply(string num1, string num2) { 
     int n1 = num1.size(); 
     int n2 = num2.size(); 
@@ -137,12 +152,11 @@ string power(int base, int exponent) {
 
 bool prime(ll n, set<ll> &primes) {
     if (primes.find(n) == primes.end()) {
-        if (n == 2 || n == 3) {
-            primes.insert(n);
-            return true;
+        if (n == 1) {
+            return false;
         }
-        for (int p : primes) {
-            if (n % p == 0) {
+        for (ll i = 2; i <= int(sqrt(n)); ++i) {
+            if (n % i == 0) {
                 return false;
             }
         }
