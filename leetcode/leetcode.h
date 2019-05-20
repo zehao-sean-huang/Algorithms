@@ -192,3 +192,14 @@ vector<vector<int> > readGraph() {
     }
     return graph;
 }
+
+vector<int> readVector() {
+    string line = "";
+    vector<int> values;
+    while (line.empty()) getline(cin, line);
+    line = line.substr(1, line.size() - 2);
+    for (string s : split(line, ",")) {
+        values.push_back(stoi(s));
+    }
+    return values;
+}
