@@ -1,6 +1,7 @@
 ._.DS_Store
 .vscode
 .idea
+*.exe
 main.dSYM
 main
 main.in
