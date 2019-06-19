@@ -1,6 +1,7 @@
 ._.DS_Store
 .vscode
 .idea
+__pycache__
 *.exe
 main.dSYM
 main
