@@ -25,3 +25,7 @@ An optimization problem. Use greedy and recursion. Cache the results to boost pe
 ### Problem 4-1
 
 Graph construction and maximum matching. Refer to [here](https://www.ics.uci.edu/~eppstein/PADS/CardinalityMatching.py).
+
+### Problem 4-2
+
+Binomial combinations counting and generating. Easy to model using binary strings.
