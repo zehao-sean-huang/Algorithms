@@ -29,3 +29,7 @@ Graph construction and maximum matching. Refer to [here](https://www.ics.uci.edu
 ### Problem 4-2
 
 Binomial combinations counting and generating. Easy to model using binary strings.
+
+### Problem 5-1
+
+Essentially a counting problem. Check out group theory, Burnside lemma and Polya Enumeration.
