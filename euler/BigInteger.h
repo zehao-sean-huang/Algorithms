@@ -53,14 +53,16 @@ BigInt Integer(int x) {
     return Integer((ll) x);
 }
 
-void operator >> (istream &in, BigInt &a) {
+istream& operator >> (istream &in, BigInt &a) {
     string s;
-    getline(cin, s);
+    getline(in, s);
     a = Integer(s);
+    return in;
 }
 
-void operator << (ostream &out, BigInt a) {
+ostream& operator << (ostream &out, BigInt a) {
     Print(a);
+    return out;
 }
 
 bool operator < (BigInt a, BigInt b) {
@@ -174,7 +176,7 @@ void operator -- (BigInt &a) { // --a
 }
 
 void operator -= (BigInt &a, BigInt b) {
-    a = a + b;
+    a = a - b;
 }
 
 void operator -= (BigInt &a, int b) {
@@ -202,8 +204,8 @@ BigInt operator * (BigInt a, int b) {
     return a * Integer(b);
 }
 
-void operator *= (BigInt &a, BigInt b) {
-    a = a * b;
+BigInt& operator *= (BigInt &a, BigInt b) {
+    return a = a * b;
 }
 
 void operator *= (BigInt &a, int b) {
