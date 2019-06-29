@@ -164,3 +164,8 @@ bool prime(ll n, set<ll> &primes) {
     }
     return true;
 }
+
+ll factorial(ll n) {
+    if (n < 2) return 1;
+    return n * factorial(n - 1);
+}
