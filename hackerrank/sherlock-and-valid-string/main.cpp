@@ -14,14 +14,23 @@ string isValid(string s) {
         if (m2.find(x.second) != m2.end()) m2[x.second] += 1;
         else m2[x.second] = 1;
     }
-    string result = "YES";
+    string result = "NO";
     if (m2.size() > 2) {
         result = "NO";
     } else if (m2.size() == 2) {
-        result = "NO";
+        int first, second, one = false;
         for (auto const& x : m2) {
-            if (x.second == 1) result = "YES";
+            if (x.second == 1 && !one) {
+                one = true;
+                first = x.first;
+            } else {
+                second = x.first;
+            }
         }
+        if (first - second == 1 || first == 1) result = "YES";
+        // if (one && abs(gap) == 1) result = "YES";
+    } else {
+        result = "YES";
     }
     return result;
 }
