@@ -203,3 +203,14 @@ vector<int> readVector() {
     }
     return values;
 }
+
+vector<string> readStringVector() {
+    string line = "";
+    vector<string> values;
+    while (line.empty()) getline(cin, line);
+    line = line.substr(1, line.size() - 2);
+    for (string s : split(line, ",")) {
+        values.push_back(s.substr(1, s.size() - 2));
+    }
+    return values;
+}
