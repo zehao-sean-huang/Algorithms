@@ -1,13 +1,26 @@
+# Mac OS
 ._.DS_Store
+
+# Editors
 .vscode
 .idea
+
+# Compilers
 __pycache__
 *.exe
 main.dSYM
 main
+test
+
+# Data
 main.in
 main.out
-test
 test.in
 test.out
+
+# Scripts
 run.sh
+
+# Project
+cmake-build-debug
+CMakeLists.txt
