@@ -214,3 +214,16 @@ vector<string> readStringVector() {
     }
     return values;
 }
+
+ListNode* readLinkedList() {
+    string line = "";
+    while (line.empty()) getline(cin, line);
+    line = line.substr(1, line.size() - 2);
+    ListNode* head = new ListNode(-1);
+    ListNode* current = head;
+    for (string s : split(line, ",")) {
+        current->next = new ListNode(stoi(s));
+        current = current->next;
+    }
+    return head->next;
+}
