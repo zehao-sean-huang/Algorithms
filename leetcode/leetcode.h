@@ -183,12 +183,26 @@ vector<vector<int> > readGraph() {
     string s = "";
     vector<vector<int> > graph;
     while (s.empty()) getline(cin, s);
-    for (string ss : split(s.substr(2, len(s) - 4), "], [")) {
+    for (string ss : split(s.substr(2, len(s) - 4), "],[")) {
         vector<int> nv;
         for (string ns : split(ss.substr(0, ss.size()), ",")) {
             nv.push_back(stoi(ns));
         }
         graph.push_back(nv);
+    }
+    return graph;
+}
+
+vector<vector<char>> readCharGraph() {
+    string s = "";
+    vector<vector<char>> graph;
+    while (s.empty()) getline(cin, s);
+    for (string ss : split(s.substr(2, len(s) - 4), "],[")) {
+        vector<char> cv;
+        for (string ns : split(ss.substr(1, ss.size() - 2), "\",\"")) {
+            cv.push_back(ns[0]);
+        }
+        graph.push_back(cv);
     }
     return graph;
 }

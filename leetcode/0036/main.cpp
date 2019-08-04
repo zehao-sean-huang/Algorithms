@@ -61,7 +61,8 @@ int main() {
     #endif
     int m = readNumber();
     for (int i = 0; i < m; ++i) {
-        ;
+        vector<vector<char>> board = readCharGraph();
+        cout << (isValidSudoku(board) ? "true" : "false") << endl;
     }
     return 0;
 }
