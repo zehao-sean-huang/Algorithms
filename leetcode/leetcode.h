@@ -63,6 +63,10 @@ void printPair(pair<DataType1, DataType2> p) {
     cout << p.first << " " << p.second << endl;
 }
 
+void printBool(bool b) {
+    cout << (b ? "true" : "false") << endl;
+}
+
 void printLinkedList(ListNode* head) {
     while (head != nullptr) {
         cout << head->val << " ";
